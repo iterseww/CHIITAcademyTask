@@ -30,11 +30,13 @@ document.getElementById("add-new-car-btn").addEventListener('click', function ()
 });
 
 document.querySelector(".save-add-edit-form-btn").addEventListener('click', function () {
-    if (document.getElementById("add-edit-modal").classList.contains("add-car")) {
-        addCar();
-        document.getElementById("add-edit-modal").classList.remove("add-car");
+    if (checkInputs()) {
+        if (document.getElementById("add-edit-modal").classList.contains("add-car")) {
+            addCar();
+            document.getElementById("add-edit-modal").classList.remove("add-car");
+        }
+        else editCar();
     }
-    else editCar();
 });
 
 document.querySelector(".confirm-delete-btn").addEventListener('click', function () {
@@ -238,7 +240,34 @@ function updateData() {
 
 function closeModal() {
     const modals = document.querySelectorAll(".modal");
-    for(const modal of modals){
+    for (const modal of modals) {
         modal.style.visibility = "hidden";
     }
 }
+
+function checkInputs() {
+    if (
+        document.getElementById('edit-company').value == "" ||
+        document.getElementById('edit-model').value == "" ||
+        document.getElementById('edit-vin').value == "" ||
+        document.getElementById('edit-color').value == "" ||
+        document.getElementById('edit-year').value == "" 
+    ) {
+        alert("You must fill in all the data.");
+        return false;
+    }
+    else if(
+        parseFloat(document.getElementById('edit-year').value) < 1885                    //The first car was invented in 1885
+    ){
+        alert("You have entered wrong year. The car can't be that old, the first car was invented in 1885.");
+        return false;
+    }
+    else if (
+        parseFloat(document.getElementById("edit-price").value) < 0 ||
+        document.getElementById("edit-price").value == ""
+    ) {
+        alert("The price cannot be less than zero.");
+        return false;
+    }
+    return true;
+} 
