@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cars list</title>
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div id="search-container">
+            <input type="text" id="search-input" placeholder="Search...">
+            <button type="button" id="add-new-car-btn">Add car</button>
+        </div>
+        <div id="table-container">
+            <table id="cars-table">
+                <thead class="table-head">
+                    <th>Company</th>
+                    <th>Model</th>
+                    <th>VIN</th>
+                    <th>Color</th>
+                    <th>Year</th>
+                    <th>Price</th>
+                    <th>Availability</th>
+                    <th>Actions Column</th>
+                </thead>
+                <tbody id="table-body">
+                </tbody>
+            </table>
+        </div>
+        <div id="pagination-container">
+            <button id="prev-page-btn">Previous</button>
+            <span id="page-number"></span>
+            <button id="next-page-btn">Next</button>
+        </div>
+        <div id="add-edit-modal" class="modal">
+            <form id="add-edit-form">
+                <h2 id="add-edit-modal-name"></h2>
+                <div><label>Company:</label>
+                    <input type="text" id="edit-company">
+                </div>
+                <div>
+                    <label>Model:</label>
+                    <input type="text" id="edit-model">
+                </div>
+                <div>
+                    <label>VIN:</label>
+                    <input type="text" id="edit-vin">
+                </div>
+                <div>
+                    <label>Color:</label>
+                    <input type="text" id="edit-color">
+                </div>
+                <div>
+                    <label>Year:</label>
+                    <input type="text" id="edit-year">
+                </div>
+                <div>                    
+                    <label>Price:</label>
+                    <p class="dollar">$</p>
+                    <input type="number" min="1" step="any" id="edit-price">
+                </div>
+                <div>
+                    <label>Availability:</label>
+                    <input type="checkbox" id="edit-availability" class="checkbox">
+                </div>
+                <div>
+                    <button type="button" class="save-add-edit-form-btn">Save</button>
+                    <button type="button" class="close-add-edit-form-btn">Close</button>
+                </div>
+            </form>
+        </div>
+        <div id="delete-modal" class="modal">
+            <div id="delete-modal-content">
+                <h2>Delete Car</h2>
+                <p id="car-name"></p>
+                <div>
+                    <button class="confirm-delete-btn">Delete</button>
+                    <button class="close-delete-btn">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="./js/script.js"></script>
+</body>
+
+</html>
